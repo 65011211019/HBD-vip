@@ -1,0 +1,257 @@
+/* App.css */
+
+/* Global Styles */
+:root {
+  --primary-color: #ff69b4; /* Pink color */
+  --hover-color: #ff1493;  /* Darker pink on hover */
+  --background-gradient: linear-gradient(to right, #ffafbd, #ffc3a0);
+  --card-background: #fff;
+  --button-radius: 8px;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --text-color: #222;
+  --header-font-size: 3em;
+  --font-family: 'Roboto', sans-serif;
+  --header-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  --border-radius: 12px;
+  --box-shadow: 0 6px 12px var(--shadow-color);
+  --button-shadow: 0 4px 8px var(--shadow-color);
+  --focus-outline-color: #ff1493;
+  --max-width: 1200px;
+  --min-width: 320px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  background: var(--background-gradient);
+  color: var(--text-color);
+}
+
+/* App Container */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Header */
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: var(--header-font-size);
+  color: #fff;
+  text-shadow: var(--header-shadow);
+}
+
+/* Button Styles */
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.select-button {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: var(--button-radius);
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--button-shadow);
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.select-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* HBD Button */
+.hbd-button {
+  background: #6a5acd;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--button-shadow);
+  margin-top: 20px;
+}
+
+.hbd-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Styles */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 350px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 1em;
+  color: #555;
+}
+
+/* Large Square Style */
+.large-square {
+  background: var(--card-background);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px var(--shadow-color);
+  padding: 40px;
+  max-width: 700px;
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.large-square h2 {
+  font-size: 2.2em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.large-square p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Play/Pause Button */
+.play-button, .pause-button {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.play-button:hover, .pause-button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+.play-button:focus, .pause-button:focus {
+  outline: none;
+}
+
+/* Download Button */
+.download-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.download-button:focus {
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Header */
+  .header h1 {
+    font-size: 2.5em;
+  }
+
+  /* Card Container */
+  .card {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .large-square {
+    padding: 25px;
+  }
+
+  /* Button container */
+  .button-container {
+    max-width: 100%;
+  }
+
+  /* Adjust button padding and font size */
+  .select-button, .hbd-button, .play-button, .pause-button, .download-button {
+    font-size: 1em;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header */
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .card h3 {
+    font-size: 1.2em;
+  }
+
+  .card p {
+    font-size: 0.9em;
+  }
+
+  .card-container {
+    gap: 15px;
+  }
+}
+
+
