@@ -112,7 +112,7 @@ body {
   background: var(--card-background);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  max-width: 350px;
+  max-width: 500px;
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -254,4 +254,29 @@ body {
   }
 }
 
+.lyrics {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
 
+.lyrics strong {
+  font-weight: bold;
+}
+
+.lyrics p {
+  margin-bottom: 10px;
+}
+
+.toggle-lyrics-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.toggle-lyrics-button:hover {
+  background-color: #e0e0e0;
+}

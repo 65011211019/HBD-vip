@@ -46,21 +46,23 @@ const friends = [
 ];
 
 const BirthdayCard = ({ friend }) => {
-  // ใช้ useRef สำหรับควบคุมตัวเล่นเพลง
+  const [showLyrics, setShowLyrics] = useState(false); // State to control the visibility of the lyrics
   const audioRef = useRef(null);
 
-  // ฟังก์ชั่นเพื่อเล่นเพลง
   const playSong = () => {
     if (audioRef.current) {
       audioRef.current.play().catch((error) => console.error("Audio play error:", error));
     }
   };
 
-  // ฟังก์ชั่นเพื่อหยุดเพลง
   const pauseSong = () => {
     if (audioRef.current) {
       audioRef.current.pause();
     }
+  };
+
+  const toggleLyrics = () => {
+    setShowLyrics((prev) => !prev); // Toggle the visibility of the lyrics
   };
 
   return (
@@ -69,22 +71,36 @@ const BirthdayCard = ({ friend }) => {
       <h2 className="friend-name">{friend.name}</h2>
       <p className="friend-message">{friend.message}</p>
 
-      {/* ปุ่มเล่นเพลง */}
+      {/* Button to toggle lyrics */}
+      <button onClick={toggleLyrics} className="toggle-lyrics-button">
+        {showLyrics ? "ซ่อนเนื้อเพลง" : "ดูเนื้อเพลง"}
+      </button>
+
+      {/* Conditionally render lyrics */}
+      {showLyrics && (
+        <div className="lyrics">
+          <h3>เนื้อเพลง</h3>
+          <p><strong>[Verse]</strong><br />วันนี้วันพิเศษของเรา<br />เพื่อนๆ กลุ่มสวนจก<br />VIP มาเจอกัน<br />เต็มไปด้วยความสุข</p>
+          <p><strong>[Verse 2]</strong><br />แฮปปี้ๆ ทุกคน<br />ร่วมกันร้องประสานเสียง<br />เฮฮาเลี้ยงสังสรรค์<br />ไม่มีกฎเกณฑ์</p>
+          <p><strong>[Chorus]</strong><br />HBD to you<br />เพื่อนรักของเรา<br />ยิ้มให้กันในวันนี้<br />สุขสันต์วันเกิด สนุกสนานไป</p>
+          <p><strong>[Bridge]</strong><br />ฟ้ามืดก็ไม่หวั่น<br />รอยยิ้มส่องสว่าง<br />เพื่อนเคียงข้างไม่หาย<br />วันนี้อิ่มเปรมฤทัย</p>
+          <p><strong>[Verse 3]</strong><br />ของขวัญที่วิเศษ<br />เสียงเชียร์จากหัวใจ<br />เรือนลอยไปกับลม<br />สุขใจกับหมู่เรา</p>
+          <p><strong>[Chorus]</strong><br />HBD to you<br />เพื่อนรักของเรา<br />ยิ้มให้กันในวันนี้<br />สุขสันต์วันเกิด สนุกสนานไป</p>
+        </div>
+      )}
+
       <button className="play-button" onClick={playSong}>
         กดฟังเพลง
       </button>
 
-      {/* ปุ่มหยุดเพลง */}
       <button className="pause-button" onClick={pauseSong}>
         หยุดเพลง
       </button>
 
-      {/* ปุ่มดาวน์โหลดเพลง */}
       <a href="/song/HBDvipSong.mp3" download className="download-button">
         ดาวน์โหลดเพลง
       </a>
 
-      {/* ตัวเล่นเพลง */}
       <audio ref={audioRef} src="/song/HBDvipSong.mp3" />
     </div>
   );
